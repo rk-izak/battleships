@@ -24,29 +24,21 @@ class Board: # each player has one
                         else:
                                 print((number + value_block * len(self.letter_rows)) + "|")
                         print(mark_line)
+            
+# player class starts here
 
-        
-# ship classes start here:        
-class Carrier: # length: 5 count: 1
-        def __init__(self):
-                self.length = 5
-                self.hit = 0
-class Battleship: # length: 4 count: 1
-        def __init__(self):
-                self.length = 4
-                self.hit = 0
-class Cruiser: # length: 3 count: 1
-        def __init__(self):
-                self.length = 3
-                self.hit = 0
-class Destroyer: # length: 2 count: 2
-        def __init__(self):
-                self.length = 2
-                self.hit = 0
-class Submarine: # length: 1 count: 2
-        def __init__(self):
-                self.length = 1
-                self.hit = 0
+class Player:
+        def __init__(self, size=10):
+                # TODO: add different game settings for different board sizes 
+                # i.e.: more ships, longer ships, etc.
+                self.size = size
+                self.ships ={'Carriers': (1,5), "Battleships":(1,4), "Cruisers": (1,3), 
+                             "Destroyers": (2,2), "Subarmines": (2,1)} # "Name" : (count,length)
+                self.hits = 0
+                self.misses = 0
                 
+        def create_board(self):
+                pass
+        
 player_1_board = Board()
 player_1_board.print_board()
