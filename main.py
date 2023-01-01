@@ -12,7 +12,6 @@ class Board: # each player has one
                 self.board_matrix = [[' ' for i in range(len(self.numbers))] for j in range(len(self.alphabet))]
 
         def print_board(self):
-        
                 value_block = "|  "
                 mark_line = '----' * (self.size+1)
                 alphabet_line = "   ".join(self.alphabet)
@@ -40,7 +39,10 @@ class Player:
                 self.hits = 0
                 self.winning_condition = sum([entry[0]*entry[1] for entry in self.ships.values()])
                 self.misses = 0
-                
+
+        def picker_gamemode(self): # this is where all ships are odd and player can pick H/V and ships middle position
+                pass
+
         def random_gamemode(self, board): # this is when all ships are spread randomly
 
                 board = board(self.size)
@@ -59,15 +61,19 @@ class Player:
                 for ship in self.ships.items():
                         name = ship[0]
                         count = ship[1][0]
+
                         for i in range(count):
                                 unfinished_placing = True
+
                                 while unfinished_placing:
                                         vertical_or_horizontal = random.choice([True, False]) # vertical if True, horizontal otherwise
                                         indices = random.choice(ship_position_indices[name])
                                         indices = list(range(indices[0], indices[1]+1))
                                         column_or_row =  random.randint(0, self.size-1) # random row or column
+
                                         found_duplicate = self.check_if_overlaps(vertical_or_horizontal=vertical_or_horizontal, 
                                         board_matrix=board_matrix, indices=indices, column_or_row=column_or_row)
+
                                         if found_duplicate:
                                                 continue
                                         else:
@@ -83,9 +89,19 @@ class Player:
                                                                 if j in indices:
                                                                         board_matrix[column_or_row][j]='S'
                                                                 j+=1
-                                                board.print_board()
                                                 unfinished_placing = False
-                #board.print_board()
+
+        def check_if_filled(self, board_matrix, dict_items):
+                count = 0
+                actual = 0
+                for value in dict_items:
+                        actual += value[0]*value[1]
+                for row in board_matrix:
+                        count += row.count('S')
+                if count == actual:
+                        return True
+                return False
+
         def check_if_overlaps(self, vertical_or_horizontal, board_matrix, indices, column_or_row):
 
                 if vertical_or_horizontal: # if vertical
@@ -94,19 +110,16 @@ class Player:
                                 if i in indices:
                                         if row[column_or_row] == 'S':
                                                 return True
+                                i+=1
                 else:
                         i = 0
                         for entry in board_matrix[column_or_row]:
                                 if i in indices:
                                         if board_matrix[column_or_row][i] == 'S':
                                                 return True
+                                i+=1
                 return False
 
-
-                board.print_board()
-
-        def picker_gamemode(self): # this is where all ships are odd and player can pick H/V and ships middle position
-                pass
 
 # player_1_board = Board()
 # #player_1_board.print_board()
