@@ -12,4 +12,9 @@ Add a timer/continue option for next player move
 
 Add scaling (i.e. bigger map == more ships + bigger ships)
 
+Add more players (i.e. for 4 players the turns would go 1>2>3>4>1 ... etc, when a player gets eliminated lets say 3 the turn goes
+1>2>4>1>2>4... and so on, until one player remains)
+
+Add an VS Bot option (where the bot always chooses a random position -> can later add some AI and increasing difficulty)
+
 Add a better UI (late stage, not needed)
