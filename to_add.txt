@@ -1,0 +1,15 @@
+Add option for adding new ships and giving them UNIQUE names, and lengths  + debug + catch fail cases
+
+Finish adding the gamemode where players place ships (starting with only odd pieces, then adding even)
+
+Add player move function (attack, board is shown before player move)
+
+Add prints with game start, win, end
+
+Make sure to clear the CLI before next players move so that they dont cheat 
+
+Add a timer/continue option for next player move
+
+Add scaling (i.e. bigger map == more ships + bigger ships)
+
+Add a better UI (late stage, not needed)
