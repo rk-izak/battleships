@@ -56,13 +56,14 @@ class Player:
                 while ship_length > self.size:
                         print('Sorry! The ship is too large for current board size! Try again!')
                         ship_length = self.input_positive_int('length')
-                        
+
                 while ship_length in current_lengths:
                         print('Sorry! There already exists a ship with that length! Try again!')
                         ship_length = self.input_positive_int('length')
 
                 self.ships[ship_name] = (ship_count, ship_length)
 
+                print()
                 if ship_count > 1:
                         print('The ships have been added!')
                 elif ship_count == 0:
@@ -120,7 +121,27 @@ class Player:
                                                                 j+=1
                                                 unfinished_placing = False
         def player_move(self):
+
+                move = input('Please, input the move in the format of LETTER+NUMBER (for example, B2): ')
+                letter_pick = move[0]
+                number_pick = move[1:]
+
+                while letter_pick.upper() not in self.board.alphabet or str(number_pick) not in [str(num + 1) for num in  self.board.numbers]:
+                        if letter_pick.upper() not in self.board.alphabet:
+                                print('Sorry! The letter has been input incorretly. Please, try again!')
+                                move = input('Please, input the move in the format of LETTER+NUMBER (for example, B2): ')
+                                letter_pick = move[0]
+                                number_pick = move[1:]
+                        else:
+                                print('Sorry! The Number has been input incorretly. Please, try again!')
+                                move = input('Please, input the move in the format of LETTER+NUMBER (for example, B2): ')
+                                letter_pick = move[0]
+                                number_pick = move[1:]
+                                
+                letter_pick = str(letter_pick).upper()
+                number_pick = int(number_pick) - 1
                 pass
+
 
         def check_if_filled(self, board_matrix, dict_values):
                 count = 0
@@ -163,13 +184,16 @@ class Player:
                         except ValueError:
                                 print("Input must be an integer!")
                 return val
-# player_1_board = Board()
-# #player_1_board.print_board()
+
+
 player = Player()
-player.add_ship()
-player.random_gamemode()
-player.board.print_board()
+#print(player.board.alphabet)
+#print(player.board.numbers)
+player.player_move()
+# player.add_ship()
+# player.random_gamemode()
+# player.board.print_board()
 
-print(player.check_if_filled(player.board.board_matrix, player.ships.values()))
+# print(player.check_if_filled(player.board.board_matrix, player.ships.values()))
 
-print(player.ships)
+# print(player.ships)
