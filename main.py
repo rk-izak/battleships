@@ -111,7 +111,7 @@ class Player:
                                                 unfinished_placing = False
         def player_move(self):
                 pass
-        
+
         def check_if_filled(self, board_matrix, dict_items):
                 count = 0
                 actual = 0
@@ -156,4 +156,6 @@ class Player:
 # player_1_board = Board()
 # #player_1_board.print_board()
 player = Player()
-player.random_gamemode(Board)
+player.random_gamemode()
+player.board.print_board()
+#player
