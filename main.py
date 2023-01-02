@@ -39,14 +39,33 @@ class Player:
                 self.hits = 0
                 self.winning_condition = sum([entry[0]*entry[1] for entry in self.ships.values()])
                 self.misses = 0
+                self.board = Board(self.size)
+
+        def add_ship(self):
+
+                ship_name = input('Please, prowide the new ship name: ') # this can be anything
+                ship_count = self.input_positive_int('count')
+                ship_length = self.input_positive_int('length')
+
+                while ship_name in self.ships.keys() and self.ships[ship_name][0] != 0: # checking if the key already exists and has a count
+                        print('Sorry, this name is already taken. Please, try again!')
+                        ship_name = input('Please, prowide the new ship name: ')
+
+                self.ships[ship_name] = (ship_count, ship_length)
+
+                if ship_count > 1:
+                        print('The ships have been added!')
+                elif ship_count == 0:
+                        print('No ships have been added!')
+                elif ship_count == 1:
+                        print('THe ship has been added!')
 
         def picker_gamemode(self): # this is where all ships are odd and player can pick H/V and ships middle position
-                pass
+                pass   
 
-        def random_gamemode(self, board): # this is when all ships are spread randomly
+        def random_gamemode(self): # this is when all ships are spread randomly
 
-                board = board(self.size)
-                board_matrix = board.board_matrix
+                board_matrix = self.board.board_matrix
                 board_row = board_matrix[0]
                 # checking all possible horizontal position for all ships
                 ship_position_indices = {k:[] for k in self.ships.keys()} # for any row or column
@@ -90,7 +109,9 @@ class Player:
                                                                         board_matrix[column_or_row][j]='S'
                                                                 j+=1
                                                 unfinished_placing = False
-
+        def player_move(self):
+                pass
+        
         def check_if_filled(self, board_matrix, dict_items):
                 count = 0
                 actual = 0
@@ -120,7 +141,18 @@ class Player:
                                 i+=1
                 return False
 
-
+        def input_positive_int(self, name):
+                while True:
+                        number = input("Enter the ship's {}: ".format(name))
+                        try:
+                                val = int(number)
+                                if val < 0:  # if not a positive int print message and ask for input again
+                                        print("Sorry, input must be a positive integer, try again!")
+                                        continue
+                                break
+                        except ValueError:
+                                print("Input must be an integer!")
+                return number
 # player_1_board = Board()
 # #player_1_board.print_board()
 player = Player()
