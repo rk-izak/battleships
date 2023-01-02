@@ -34,8 +34,8 @@ class Player:
                 # TODO: add different game settings for different board sizes 
                 # i.e.: more ships, longer ships, etc.
                 self.size = size
-                self.ships ={'Carriers': (1,5), "Battleships":(1,4), "Cruisers": (1,3), 
-                             "Destroyers": (2,2), "Subarmines": (2,1)} # "Name" : (count,length)
+                self.ships ={'Carrier': (1,5), "Battleship":(1,4), "Cruiser": (1,3), 
+                             "Destroyer": (2,2), "Subarmine": (2,1)} # "Name" : (count,length)
                 self.hits = 0
                 self.winning_condition = sum([entry[0]*entry[1] for entry in self.ships.values()])
                 self.misses = 0
@@ -47,9 +47,19 @@ class Player:
                 ship_count = self.input_positive_int('count')
                 ship_length = self.input_positive_int('length')
 
-                while ship_name in self.ships.keys() and self.ships[ship_name][0] != 0: # checking if the key already exists and has a count
+                current_lengths = [value[1] for value in self.ships.values()]
+
+                while ship_name in self.ships.keys() : # checking if the key/length already exists
                         print('Sorry, this name is already taken. Please, try again!')
                         ship_name = input('Please, prowide the new ship name: ')
+
+                while ship_length > self.size:
+                        print('Sorry! The ship is too large for current board size! Try again!')
+                        ship_length = self.input_positive_int('length')
+                        
+                while ship_length in current_lengths:
+                        print('Sorry! There already exists a ship with that length! Try again!')
+                        ship_length = self.input_positive_int('length')
 
                 self.ships[ship_name] = (ship_count, ship_length)
 
@@ -112,10 +122,10 @@ class Player:
         def player_move(self):
                 pass
 
-        def check_if_filled(self, board_matrix, dict_items):
+        def check_if_filled(self, board_matrix, dict_values):
                 count = 0
                 actual = 0
-                for value in dict_items:
+                for value in dict_values:
                         actual += value[0]*value[1]
                 for row in board_matrix:
                         count += row.count('S')
@@ -152,10 +162,14 @@ class Player:
                                 break
                         except ValueError:
                                 print("Input must be an integer!")
-                return number
+                return val
 # player_1_board = Board()
 # #player_1_board.print_board()
 player = Player()
+player.add_ship()
 player.random_gamemode()
 player.board.print_board()
-#player
+
+print(player.check_if_filled(player.board.board_matrix, player.ships.values()))
+
+print(player.ships)
