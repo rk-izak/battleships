@@ -149,9 +149,9 @@ class Player:
                 # block_picked = opponent_board.board_matrix[column_pick][row_pick] 
                 if str(block_picked) == 'S':
                         self.hits += 1
-                        # mark X on ur board and * on enemy board
+                        # mark X on ur checking board and X on enemy game board
                 else:
-                        # mark M on ur board and do nothing on enemy board
+                        # mark M on ur checking board and do nothing on enemy boards
                         pass
 
 
