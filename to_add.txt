@@ -1,5 +1,7 @@
 ESSENTIAL:
 
+Add player names as inputs
+
 Add option for adding new ships and giving them UNIQUE names, and lengths  + debug + catch fail cases [X]
 
 Add player move function (attack, board is shown before player move) [WIP]
