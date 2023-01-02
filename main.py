@@ -9,12 +9,16 @@ class Board: # each player has one
                 self.size = size
                 self.alphabet = list(string.ascii_uppercase)[0:self.size]
                 self.numbers = list(range(len(self.alphabet)))[0:self.size]
-                self.board_matrix = [[' ' for i in range(len(self.numbers))] for j in range(len(self.alphabet))]
+                # now turning lists to dicts
+                self.alphabet = {self.alphabet[i]:i for i in range(self.size)}
+                self.numbers = {str(self.numbers[i]+1):i for i in range(self.size)}
+
+                self.board_matrix = [[' ' for i in range(len(self.numbers.keys()))] for j in range(len(self.alphabet))]
 
         def print_board(self):
                 value_block = "|  "
                 mark_line = '----' * (self.size+1)
-                alphabet_line = "   ".join(self.alphabet)
+                alphabet_line = "   ".join(self.alphabet.keys())
                 print("    " + alphabet_line)
                 print(mark_line[:-1])
                 i = 1
@@ -120,27 +124,36 @@ class Player:
                                                                         board_matrix[column_or_row][j]='S'
                                                                 j+=1
                                                 unfinished_placing = False
-        def player_move(self):
+        def player_move(self, opponent_board):
 
                 move = input('Please, input the move in the format of LETTER+NUMBER (for example, B2): ')
                 letter_pick = move[0]
                 number_pick = move[1:]
 
-                while letter_pick.upper() not in self.board.alphabet or str(number_pick) not in [str(num + 1) for num in  self.board.numbers]:
+                while letter_pick.upper() not in self.board.alphabet.keys() or str(number_pick) not in self.board.numbers.keys():
                         if letter_pick.upper() not in self.board.alphabet:
                                 print('Sorry! The letter has been input incorretly. Please, try again!')
                                 move = input('Please, input the move in the format of LETTER+NUMBER (for example, B2): ')
                                 letter_pick = move[0]
                                 number_pick = move[1:]
                         else:
-                                print('Sorry! The Number has been input incorretly. Please, try again!')
+                                print('Sorry! The number has been input incorretly. Please, try again!')
                                 move = input('Please, input the move in the format of LETTER+NUMBER (for example, B2): ')
                                 letter_pick = move[0]
                                 number_pick = move[1:]
-                                
-                letter_pick = str(letter_pick).upper()
-                number_pick = int(number_pick) - 1
-                pass
+
+                row_pick = self.board.alphabet[str(letter_pick).upper()]
+                column_pick = self.board.numbers[str(number_pick)]
+                
+                block_picked = self.board.board_matrix[column_pick][row_pick] # correctly picks currently for our board
+                # block_picked = opponent_board.board_matrix[column_pick][row_pick] 
+                if str(block_picked) == 'S':
+                        self.hits += 1
+                        # mark X on ur board and * on enemy board
+                else:
+                        # mark M on ur board and do nothing on enemy board
+                        pass
+
 
 
         def check_if_filled(self, board_matrix, dict_values):
@@ -189,10 +202,16 @@ class Player:
 player = Player()
 #print(player.board.alphabet)
 #print(player.board.numbers)
-player.player_move()
+#player.player_move()
 # player.add_ship()
-# player.random_gamemode()
-# player.board.print_board()
+player.random_gamemode()
+player.board.print_board()
+
+player.player_move()
+
+player.board.print_board()
+# print(player.board.alphabet)
+# print(player.board.numbers)
 
 # print(player.check_if_filled(player.board.board_matrix, player.ships.values()))
 
