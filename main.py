@@ -44,6 +44,7 @@ class Player:
                 self.winning_condition = sum([entry[0]*entry[1] for entry in self.ships.values()])
                 self.misses = 0
                 self.board = Board(self.size)
+                self.checking_board = Board(self.size)
 
         def add_ship(self):
 
@@ -124,7 +125,7 @@ class Player:
                                                                         board_matrix[column_or_row][j]='S'
                                                                 j+=1
                                                 unfinished_placing = False
-        def player_move(self, opponent_board):
+        def player_move(self, opponent_board): # opponent_board = Player.board
 
                 move = input('Please, input the move in the format of LETTER+NUMBER (for example, B2): ')
                 letter_pick = move[0]
@@ -145,14 +146,17 @@ class Player:
                 row_pick = self.board.alphabet[str(letter_pick).upper()]
                 column_pick = self.board.numbers[str(number_pick)]
                 
-                block_picked = self.board.board_matrix[column_pick][row_pick] # correctly picks currently for our board
-                # block_picked = opponent_board.board_matrix[column_pick][row_pick] 
+                # block_picked = self.board.board_matrix[column_pick][row_pick] # correctly picks currently for our board
+                block_picked = opponent_board.board_matrix[column_pick][row_pick] 
                 if str(block_picked) == 'S':
                         self.hits += 1
+                        self.checking_board.board_matrix[column_pick][row_pick] = 'X'
+                        opponent_board.board_matrix[column_pick][row_pick] = 'X'
                         # mark X on ur checking board and X on enemy game board
                 else:
+                        self.checking_board.board_matrix[column_pick][row_pick] = 'M'
                         # mark M on ur checking board and do nothing on enemy boards
-                        pass
+                        
 
 
 
@@ -199,17 +203,28 @@ class Player:
                 return val
 
 
-player = Player()
+player1= Player()
+player2 = Player()
 #print(player.board.alphabet)
 #print(player.board.numbers)
 #player.player_move()
 # player.add_ship()
-player.random_gamemode()
-player.board.print_board()
+player1.random_gamemode()
+player2.random_gamemode()
+print('PLAYER 1 BOARD')
+print()
+player1.board.print_board()
+print('PLAYER 2 BOARD')
+print()
+player2.board.print_board()
 
-player.player_move()
+player1.player_move(player2.board)
 
-player.board.print_board()
+player1.board.print_board()
+player1.checking_board.print_board()
+print('=================================')
+player2.board.print_board()
+player2.checking_board.print_board()
 # print(player.board.alphabet)
 # print(player.board.numbers)
 
