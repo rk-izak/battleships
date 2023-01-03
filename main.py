@@ -37,6 +37,7 @@ class Player:
         def __init__(self, size=10):
                 # TODO: add different game settings for different board sizes 
                 # i.e.: more ships, longer ships, etc.
+                self.name = input('Please, enter your name: ')
                 self.size = size
                 self.ships ={'Carrier': (1,5), "Battleship":(1,4), "Cruiser": (1,3), 
                              "Destroyer": (2,2), "Subarmine": (2,1)} # "Name" : (count,length)
@@ -205,6 +206,8 @@ class Player:
 
 player1= Player()
 player2 = Player()
+print(player1.name)
+print(player2.name)
 #print(player.board.alphabet)
 #print(player.board.numbers)
 #player.player_move()
@@ -231,3 +234,7 @@ player2.checking_board.print_board()
 # print(player.check_if_filled(player.board.board_matrix, player.ships.values()))
 
 # print(player.ships)
+
+# winning condition is basically if player.hits == player.winning_condition:
+# player wins; else: another player takes their turn
+# stats is bascially hits/misses/global wins that are stored in a txt file :)

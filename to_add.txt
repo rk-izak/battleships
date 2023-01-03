@@ -1,16 +1,16 @@
 ESSENTIAL:
 
-Add player names as inputs
+Add player names as inputs [X]
 
 Add option for adding new ships and giving them UNIQUE names, and lengths  + debug + catch fail cases [X]
 
-Add player move function (attack, board is shown before player move) [WIP]
+Add player move function + checking board (attack, board is shown before player move) [X]
 
-Add prints with game start, win, end and stats
+Add prints with game start, win, end and stats [WIP]
 
-Make sure to clear the CLI before next players move so that they dont cheat 
+Make sure to clear the CLI before next players move so that they dont cheat [WIP]
 
-Add a timer/continue option for next player move
+Add a timer/continue option for next player move [WIP]
 
 
 ADDITIONAL:
