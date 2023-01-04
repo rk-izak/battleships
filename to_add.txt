@@ -6,22 +6,44 @@ Add option for adding new ships and giving them UNIQUE names, and lengths  + deb
 
 Add player move function + checking board (attack, board is shown before player move) [X]
 
-Add prints with game start, win, end and stats [WIP]
+Add prints with game start, win, end, showing ships and stats an [x]
 
-Make sure to clear the CLI before next players move so that they dont cheat [WIP]
+Make sure to clear the CLI before next players move so that they dont cheat [x]
 
-Add a timer/continue option for next player move [WIP]
+Add a timer/continue option for next player move [x]
 
+Make it so when a player hits, they get to attack again [WIP]
+
+Add a legend(X means hit, S means ship, M means miss) [WIP]
+
+FOR CUSTOM GAMEMODE -> REMEMBER TO SET player_count/board_size AS INTEGERS!!! [UNFINISHED]\
+
+Make so when players decide to have a rematch, they can change the board size and add ships [WIP]
+
+Reformat the check if in list into a function(list, message) so it does not look that bad ;D
+
+If ship has length 0, tell user its not been added. [WIP]
+
+Debug that more than 1 ship can be added [X]
+
+SPECIAL ATTACKS -> if you hit 3/5/8 in a row, get a special NUKE attack that hits an area ;D
+
+!!!
+Edge case: [X]
+* there might be a situation where a ship cannot be placed in finite runtime 
+-> function checks if for the new ship set the board can be filled finitely
+quick hotfix -> if a new ship added would make the board be filled in more than 50% -> do not add 
 
 ADDITIONAL:
 
-Add scaling (i.e. more/bigger ships == bigger map)
+
+Add scaling (i.e. more/bigger ships == bigger map) [kinda WIP -> custom gamemode]
 
 Finish adding the gamemode where players place ships (starting with only odd pieces, then adding even)
 
-Add a better UI (late stage, not needed)
+Add a better UI (late stage, not needed) [WIP]
 
 Add an VS Bot option (where the bot always chooses a random position -> can later add some AI and increasing difficulty)
 
 Add more players (i.e. for 4 players the turns would go 1>2>3>4>1 ... etc, when a player gets eliminated lets say 3 the turn goes
-1>2>4>1>2>4... and so on, until one player remains)
+1>2>4>1>2>4... and so on, until one player remains) [kinda WIP]
