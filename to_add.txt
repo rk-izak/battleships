@@ -16,6 +16,11 @@ A conclusion
 
 ESSENTIAL:
 
+
+FOR CUSTOM GAMEMODE -> REMEMBER TO SET player_count/board_size AS INTEGERS!!! [UNFINISHED] -> EXTREMELY IMPORTANT
+Additionally, remember to move the function of checking integers from the player class and move it to utils + refactor
+
+
 Add player names as inputs [X]
 
 Add option for adding new ships and giving them UNIQUE names, and lengths  + debug + catch fail cases [X]
