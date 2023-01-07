@@ -12,21 +12,16 @@ Make sure to clear the CLI before next players move so that they dont cheat [x]
 
 Add a timer/continue option for next player move [x]
 
-Make it so when a player hits, they get to attack again [WIP]
+Make it so when a player hits, they get to attack again [X]
 
-Add a legend(X means hit, S means ship, M means miss) [WIP]
+Add a legend(X means hit, S means ship, M means miss) [X]
 
-FOR CUSTOM GAMEMODE -> REMEMBER TO SET player_count/board_size AS INTEGERS!!! [UNFINISHED]\
+Reformat the check if in list into a function(list, message) + divide into scripts [X]
 
-Make so when players decide to have a rematch, they can change the board size and add ships [WIP]
-
-Reformat the check if in list into a function(list, message) so it does not look that bad ;D
-
-If ship has length 0, tell user its not been added. [WIP]
+If ship has length 0, tell user its not been added. [X]
 
 Debug that more than 1 ship can be added [X]
 
-SPECIAL ATTACKS -> if you hit 3/5/8 in a row, get a special NUKE attack that hits an area ;D
 
 !!!
 Edge case: [X]
@@ -36,6 +31,11 @@ quick hotfix -> if a new ship added would make the board be filled in more than 
 
 ADDITIONAL:
 
+FOR CUSTOM GAMEMODE -> REMEMBER TO SET player_count/board_size AS INTEGERS!!! [UNFINISHED]\
+
+Make so when players decide to have a rematch, they can change the board size and add ships [WIP] -> laters
+
+SPECIAL ATTACKS -> if you hit 3/5/8 in a row, get a special NUKE attack that hits an area
 
 Add scaling (i.e. more/bigger ships == bigger map) [kinda WIP -> custom gamemode]
 
