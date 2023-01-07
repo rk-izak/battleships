@@ -1,3 +1,19 @@
+CC:
+
+Once you’ve completed the program, you’re ready to create your blog post.
+
+Create a blog post using Medium, Dev.to, or some other blogging platform.
+
+Your blog post should include the following:
+
+A compelling title about your program
+An introduction sharing the background info (the “why”)
+An image or a GIF of your program
+An accompanying paragraph describing your Python code
+A link to your code on GitHub.
+A conclusion
+
+
 ESSENTIAL:
 
 Add player names as inputs [X]
