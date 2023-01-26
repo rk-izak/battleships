@@ -6,9 +6,9 @@ class Player:
                 # i.e.: more ships, longer ships, etc.
                 self.name = input('Chosen name: ')
                 self.size = size
-                # self.ships ={"Carrier": (1,5), "Battleship":(1,4), "Cruiser": (1,3), 
-                #              "Destroyer": (2,2), "Subarmine": (2,1)} # "Name" : (count,length)
-                self.ships = {"Subarmine": (1,1)}
+                self.ships ={"Carrier": (1,5), "Battleship":(1,4), "Cruiser": (1,3), 
+                             "Destroyer": (2,2), "Subarmine": (2,1)} # "Name" : (count,length)
+                # self.ships = {"Subarmine": (1,1)}
                 self.winning_condition = sum([entry[0]*entry[1] for entry in self.ships.values()])
                 self.wins = 0
                 self.losses = 0
