@@ -35,9 +35,10 @@ class Player:
                         print('Sorry! The ship is too large for current board size! Try again!')
                         ship_length = self.input_positive_int('length')
 
-                while ship_length in current_lengths:
-                        print('Sorry! There already exists a ship with that length! Try again!')
-                        ship_length = self.input_positive_int('length')
+                # while ship_length in current_lengths: # this can be turned on to prevent adding ships with the same length
+                # as currently on board
+                #        print('Sorry! There already exists a ship with that length! Try again!')
+                #        ship_length = self.input_positive_int('length')
                 # checking if the board will be completely filled after a ship is added:
 
                 if self.winning_condition + (ship_count * ship_length) > 0.5 * self.size ** 2:

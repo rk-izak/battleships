@@ -67,4 +67,4 @@ Add a better UI (late stage, not needed) [WIP]
 Add an VS Bot option (where the bot always chooses a random position -> can later add some AI and increasing difficulty)
 
 Add more players (i.e. for 4 players the turns would go 1>2>3>4>1 ... etc, when a player gets eliminated lets say 3 the turn goes
-1>2>4>1>2>4... and so on, until one player remains) [kinda WIP]
+1>2>4>1>2>4... and so on, until one player remains) or make it so each player decides who to hit :D [kinda WIP]
