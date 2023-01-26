@@ -63,7 +63,7 @@ If you spot anything you think is wrong, please send me a message at: radoslawiz
         """)
         current_gamemodes = ['default', 'custom']
 
-        gamemode = str(input("Which gamemode would you like to play?" + "\n")).lower()
+        gamemode = str(input("Which gamemode would you like to play? [default/custom]" + "\n")).lower()
         msg = 'Sorry, I do not have that in my repertoire, please type in the preferred gamemode again.'
         gamemode = is_ans_in_list(answer=gamemode, ans_list=current_gamemodes, message=msg)
 
